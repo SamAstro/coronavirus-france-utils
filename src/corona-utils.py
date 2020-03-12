@@ -73,6 +73,7 @@ def patientsDB():
                                                        'Guyane',
                                                        'Hauts-de-France',
                                                        'Ile-de-France',
+                                                       'La Reunion',
                                                        'Martinique',
                                                        'Normandie',
                                                        'Nouvelle-Aquitaine',
