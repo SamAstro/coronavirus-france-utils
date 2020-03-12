@@ -9,6 +9,7 @@ projet](https://github.com/lperez31/coronavirus-france-dataset).
 
 ### Maintenance des forks locaux par rapport au projet Master
 > git-fork-maintenance.sh
+
 Le premier utilitaire permet de maintenir toujours à jour le projet local du
 contributeur par rapport au projet master. Voici comment il s'utilise :
 
@@ -20,6 +21,7 @@ de nouvelles modifications.
 
 ### Ajout de nouvelles données consolidées
 > corona-utils.py
+
 Le second utilitaire permet d'ajouter en masse de nouvelles données dans le
 fichier `patient.csv`.
 
@@ -41,6 +43,8 @@ ARS Ile-de-France*, pour une date de confirmation au *15 mars 2020*, pour le
 département *DELETE*.
 
 ### Merge avec le fichier source
+> merge-files.sh
+
 Ce dernier utilitaire permet de merger le fichier `patient-tmp.csv` avec le
 fichier master `patient.csv`.
 
