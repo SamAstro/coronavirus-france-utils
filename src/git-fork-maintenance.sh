@@ -32,7 +32,8 @@ current_branch() {
 saved_branch=$(current_branch)
 
 [[ "${saved_branch}" != "master" ]] && git checkout "master"
-git pull
+git fetch upstream
+git merge upstream/master
 
 for branch in $(local_branches); do
   if [[ "${branch}" != "master" ]]; then
