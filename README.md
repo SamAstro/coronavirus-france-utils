@@ -3,9 +3,21 @@
 ## Introduction
 Ce projet contient 3 utilitaires afin de faciliter le travail de consolidation
 des données France de la pandémie COVID-19 [url du
-projet](https://github.com/lperez31/coronavirus-france-dataset).
+projet](https://github.com/lperez31/coronavirus-france-dataset) :
+
+* git-fork-maintenance.sh
+* patient-utils.py
+* merge-files.sh
 
 ## Usage
+
+### TL;DR
+Voici le workflow lors de la mise à jour quotidienne des données :
+
+* lancement de `git-fork-maintenance.sh`
+* For each ajout de données (groupé par [region|departement|ville|status|...])
+    * lancement de `patient-utils.py`
+    * lancement de `merge-files.sh`
 
 ### Maintenance des forks locaux par rapport au projet Master
 > git-fork-maintenance.sh
@@ -20,7 +32,7 @@ $ ./src/git-fork-maintenance.sh <absolute/path/to/repo>
 de nouvelles modifications.
 
 ### Ajout de nouvelles données consolidées
-> corona-utils.py
+> patient-utils.py
 
 Le second utilitaire permet d'ajouter en masse de nouvelles données dans le
 fichier `patient.csv`.
@@ -36,7 +48,7 @@ L'utilitaire a pour arguments les différentes colonnes du fichier `patient.csv`
 
 Il s'utilise de la manière suivante :
 ```bash
-$  python src/corona-utils.py --mode add --region 'Ile-de-France' --source 'CP ARS Ile-de-France' --confirmed_date 2020-03-15 --departement 'DELETE' --occurrence 1
+$  python src/patient-utils.py --mode add --region 'Ile-de-France' --source 'CP ARS Ile-de-France' --confirmed_date 2020-03-15 --departement 'DELETE' --occurrence 1
 ```
 Cette commande ajoute *1* ligne dont la région est *Ile-de-France*, la source *CP
 ARS Ile-de-France*, pour une date de confirmation au *15 mars 2020*, pour le
@@ -62,17 +74,17 @@ fichier.
 **IMPORTANT** Il est indispensable d'effectuer le merge avec le fichier source à
 chaque nouveau ajout de lignes.
 
-En d'autres termes, voici le workflow lors de la mise à jour quotidienne des
-données :
+## Limitation
+Le script `patient-utils.py` ne reconnait, pour les régions, que celles ayant déjà
+une personne contaminée recensée.
 
-* lancement de `git-fork-maintenance.sh`
-* For each ajout de données (groupé par [region|departement|ville|status|...])
-    * lancement de `corona-utils.py`
-    * lancement de `merge-files.sh`
+**Pour toute nouvelle région contaminée, il est
+nécessaire de modifier le script pour y ajouter le nom de cette région dans la
+liste des choix disponibles**
 
 ## Bonus
-L'utilitaire `corona-utils.py` permet d'obtenir rapidement des stats sur une
+L'utilitaire `patient-utils.py` permet d'obtenir rapidement des stats sur une
 région donnée. Voici comment l'utiliser :
 ```bash
-$ python src/corona-utils.py --mode stats --region 'Bretagne'
+$ python src/patient-utils.py --mode stats --region 'Bretagne'
 ```
