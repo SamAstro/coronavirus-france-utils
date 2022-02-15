@@ -9,6 +9,8 @@ projet](https://github.com/lperez31/coronavirus-france-dataset) :
 * patient-utils.py
 * merge-files.sh
 
+Pour contribuer aux projets de collecte de données liées au COVID18, [le guide de contribution pour l'ensemble des projets de collecte de données](https://github.com/opencovid19-fr/comment-contribuer).
+
 ## Usage
 
 ### TL;DR
